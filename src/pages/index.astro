@@ -1,0 +1,27 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+const foregroundColor = "red";
+const backgroundColor = "yellow";
+const isItalic = true;
+---
+
+<MainLayout title="My Blog">
+  <p>Hi <span>From</span> Home</p>
+  <p class:list={["big", { italic: isItalic }]}>Hi <span>From</span> Home</p>
+  <p>Hi <span>From</span> Home</p>
+</MainLayout>
+
+<style lang="scss" define:vars={{ foregroundColor, backgroundColor }}>
+  p {
+    span {
+      color: var(--foregroundColor);
+      background: var(--backgroundColor);
+    }
+  }
+  .big {
+    font-size: 4rem;
+  }
+  .italic {
+    font-style: italic;
+  }
+</style>
