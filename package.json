@@ -17,6 +17,7 @@
     "astro": "^2.0.2"
   },
   "devDependencies": {
+    "astro-icon": "^0.8.0",
     "postcss": "^8.4.21",
     "postcss-preset-env": "^8.0.1",
     "sass": "^1.57.1"

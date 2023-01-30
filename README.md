@@ -5,6 +5,7 @@
 Unsure if need the following in Astro 2.0.
 
 ```bash
+npm i -D astro-icon
 npm i -D sass
 npm i -D postcss postcss-preset-env
 ```
