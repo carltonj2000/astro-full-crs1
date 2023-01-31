@@ -1,7 +1,25 @@
 ---
+import Link from "../components/Link.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title="About" description="About Description">
-  <h2>About</h2>
+  <section class="container about" aria-label="About Me">
+    <img src="/images/headshot.jpg" alt="headshot" width="200" height="330" />
+    <div class="content">
+      <h1>About</h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi,
+        officiis iure! Ipsa quas, incidunt iure doloremque sint aut eius. Eum
+        reprehenderit saepe, facilis explicabo doloremque suscipit porro
+        dignissimos? Dolor laborum, velit libero incidunt sunt voluptate.
+        Repellat eius ea alias qui.
+      </p>
+      <Link
+        href="mailto:carlton.joseph@gmail.com"
+        style="primary"
+        text="Contact Me"
+      />
+    </div>
+  </section>
 </MainLayout>

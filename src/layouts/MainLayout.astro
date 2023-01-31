@@ -12,7 +12,9 @@ const { title = "default title", description = "default description" } =
   <MainHead {title} {description} />
   <body>
     <Nav />
-    <slot>default content</slot>
+    <main>
+      <slot>default content</slot>
+    </main>
     <Footer />
   </body>
 </html>
