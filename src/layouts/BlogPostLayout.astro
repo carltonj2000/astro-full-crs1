@@ -1,0 +1,18 @@
+---
+import BlogPostHeader from "./BlogPostHeader.astro";
+import MainLayout from "./MainLayout.astro";
+const { frontmatter } = Astro.props;
+const { title, description, date, category, author, image } = frontmatter;
+---
+
+<MainLayout {title} {description}>
+  <BlogPostHeader {title} {date} {category} {author} {image} />
+  <div class="post-content">
+    <div class="content">
+      <slot>default content</slot>
+    </div>
+    <div class="sidebar">
+      <p>Side bar</p>
+    </div>
+  </div>
+</MainLayout>
