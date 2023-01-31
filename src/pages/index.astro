@@ -1,27 +1,43 @@
 ---
+import PostCard from "../components/PostCard.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-const foregroundColor = "red";
-const backgroundColor = "yellow";
-const isItalic = true;
+import { formatBlogPosts } from "../js/utils.js";
+import Link from "../components/Link.astro";
+let allPost = await Astro.glob("./blog/*.md");
+allPost = formatBlogPosts(allPost, { limit: 3 });
 ---
 
 <MainLayout title="My Blog">
-  <p>Hi <span>From</span> Home</p>
-  <p class:list={["big", { italic: isItalic }]}>Hi <span>From</span> Home</p>
-  <p>Hi <span>From</span> Home</p>
+  <section class="container about" aria-label="About Me">
+    <img src="/images/headshot.jpg" alt="headshot" width="200" height="330" />
+    <div class="content">
+      <h1>About</h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi,
+        officiis iure! Ipsa quas, incidunt iure doloremque sint aut eius. Eum
+        Repellat eius ea alias qui.
+      </p>
+      <Link
+        href="/about/"
+        style="secondary"
+        isFilled={false}
+        borderVisible={true}
+        text="About Me"
+      />
+    </div>
+  </section>
+  <section class="container" aria-label="New Blog Posts">
+    <h2 class="h1">New Blog Posts</h2>
+    <div class="post-container">
+      {
+        allPost.map((post) => (
+          <PostCard
+            frontmatter={post.frontmatter}
+            url={post.url}
+            tagType="h3"
+          />
+        ))
+      }
+    </div>
+  </section>
 </MainLayout>
-
-<style lang="scss" define:vars={{ foregroundColor, backgroundColor }}>
-  p {
-    span {
-      color: var(--foregroundColor);
-      background: var(--backgroundColor);
-    }
-  }
-  .big {
-    font-size: 4rem;
-  }
-  .italic {
-    font-style: italic;
-  }
-</style>
