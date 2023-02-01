@@ -4,10 +4,11 @@ import Related from "../components/Related.astro";
 import BlogPostHeader from "./BlogPostHeader.astro";
 import MainLayout from "./MainLayout.astro";
 const { frontmatter } = Astro.props;
-const { title, description, date, category, author, image } = frontmatter;
+const { title, description, date, category, author, image, robots } =
+  frontmatter;
 ---
 
-<MainLayout {title} {description}>
+<MainLayout {title} {description} {image} {frontmatter} {robots}>
   <BlogPostHeader {title} {date} {category} {author} {image} />
   <div class="post-content">
     <div class="content">
