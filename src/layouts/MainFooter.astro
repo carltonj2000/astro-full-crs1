@@ -1,9 +1,11 @@
 ---
 import { Icon } from "astro-icon";
+import Counter from "../components/Counter";
 ---
 
 <footer>
   <small>Copyright &copy; <span id="copyright">{}</span> Carlton Joseph</small>
+  <Counter client:visible />
   <small>
     <a href="rss.xml"
       ><span>Subscribe to RSS</span><Icon

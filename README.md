@@ -5,6 +5,8 @@
 Unsure if need the following in Astro 2.0.
 
 ```bash
+npx astro add tailwind
+npx astro add react
 npm install -D @astrojs/rss
 npx astro add sitemap
 npx astro add image
