@@ -5,6 +5,7 @@
 Unsure if need the following in Astro 2.0.
 
 ```bash
+npx astro add sitemap
 npx astro add image
 npm i -D astro-icon
 npm i -D sass
