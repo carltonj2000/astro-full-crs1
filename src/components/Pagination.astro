@@ -4,7 +4,7 @@ import Link from "./Link.astro";
 const { prevUrl, nextUrl } = Astro.props;
 ---
 
-<nav aria-label="Blog Pages" style={{ display: "flex", gap: "1rem" }}>
+<nav aria-label="Blog Pages">
   {
     prevUrl && (
       <Link
@@ -17,6 +17,7 @@ const { prevUrl, nextUrl } = Astro.props;
       />
     )
   }
+  <p>Page</p>
   {
     nextUrl && (
       <Link
@@ -30,3 +31,11 @@ const { prevUrl, nextUrl } = Astro.props;
     )
   }
 </nav>
+
+<style>
+  nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+</style>
