@@ -1,8 +1,18 @@
 ---
+import { Icon } from "astro-icon";
 ---
 
 <footer>
   <small>Copyright &copy; <span id="copyright">{}</span> Carlton Joseph</small>
+  <small>
+    <a href="rss.xml"
+      ><span>Subscribe to RSS</span><Icon
+        name="tabler:rss"
+        width="20"
+        height="20"
+      /></a
+    >
+  </small>
 </footer>
 
 <script>
@@ -10,3 +20,15 @@
     .getFullYear()
     .toString();
 </script>
+
+<style>
+  footer,
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  span {
+    margin-right: 0.5rem;
+  }
+</style>
