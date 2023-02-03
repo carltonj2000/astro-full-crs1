@@ -2,8 +2,8 @@
 import { Image } from "@astrojs/image/components";
 import { formatDate, slugify } from "../js/utils.js";
 import Link from "./Link.astro";
-const { url, frontmatter, tagType } = Astro.props;
-const { title, date, category, author, image, description } = frontmatter;
+const { url, data, tagType } = Astro.props;
+const { title, date, category, author, image, description } = data;
 const Tag = tagType;
 ---
 
@@ -11,7 +11,7 @@ const Tag = tagType;
   <small>
     <a href={`/category/${slugify(category)}`} class="badge">{category}</a>
   </small>
-  <a href={url} tabindex="-1" aria-hidden="true">
+  <a href={`/blog/${url}`} tabindex="-1" aria-hidden="true">
     <Image
       src={image.src}
       alt={image.alt}
@@ -26,7 +26,7 @@ const Tag = tagType;
   <div class="content">
     <div>
       <Tag class="h3">
-        <a href="">{title}</a>
+        <a href={`/blog/${url}`}>{title}</a>
       </Tag>
       <small>
         by <a href={`/author/${slugify(author)}`}>{author}</a> &#183; {
@@ -35,6 +35,6 @@ const Tag = tagType;
       </small>
     </div>
     <p>{description}</p>
-    <Link href={url} text="Read Post" style="secondary" />
+    <Link href={`/blog/${url}`} text="Read Post" style="secondary" />
   </div>
 </article>

@@ -1,17 +1,19 @@
 ---
-import { formatBlogPosts, slugify } from "../js/utils.js";
-let allPost = await Astro.glob("../pages/blog/*.md");
+import { CollectionEntry, getCollection } from "astro:content";
+import { formatBlogPosts } from "../js/utils.js";
+//let allPost = await Astro.glob("../pages/blog/*.md");
+let allPost: CollectionEntry<"blog">[] = await getCollection("blog");
 allPost = formatBlogPosts(allPost);
 
-const { category, author, title } = Astro.props;
+const { category, title } = Astro.props;
 
 const related = allPost
   .filter(
     (p) =>
-      p.frontmatter.title === title
+      p.data.title === title
         ? false
-        : p.frontmatter.category.toLowerCase() === category.toLowerCase()
-    // : p.frontmatter.category === category || p.frontmatter.author === author
+        : p.data.category.toLowerCase() === category.toLowerCase()
+    // : p.data.category === category || p.data.author === author
   )
   .flat();
 ---
@@ -24,7 +26,7 @@ const related = allPost
         {related.map((r) => (
           <li>
             <a class="badge" href={r.url}>
-              {r.frontmatter.title}
+              {r.data.title}
             </a>
           </li>
         ))}

@@ -1,9 +1,11 @@
 ---
+import { getCollection, CollectionEntry } from "astro:content";
 import PostCard from "../components/PostCard.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import { formatBlogPosts } from "../js/utils.js";
 import Link from "../components/Link.astro";
-let allPost = await Astro.glob("./blog/*.md");
+//let allPost = await Astro.glob("./blog/*.md");
+let allPost: CollectionEntry<"blog">[] = await getCollection("blog");
 allPost = formatBlogPosts(allPost, { limit: 3 });
 ---
 
@@ -31,11 +33,7 @@ allPost = formatBlogPosts(allPost, { limit: 3 });
     <div class="post-container">
       {
         allPost.map((post) => (
-          <PostCard
-            frontmatter={post.frontmatter}
-            url={post.url}
-            tagType="h3"
-          />
+          <PostCard data={post.data} url={post.slug} tagType="h3" />
         ))
       }
     </div>
